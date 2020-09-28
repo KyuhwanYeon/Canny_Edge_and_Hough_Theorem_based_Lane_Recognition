@@ -1,10 +1,5 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
----
 
 **Finding Lane Lines on the Road**
 
@@ -12,36 +7,20 @@ The goals / steps of this project are the following:
 * Make a pipeline that finds lane lines on the road
 * Reflect on your work in a written report
 
-
-[//]: # (Image References)
-
-[image1]: ./examples/grayscale.jpg "Grayscale"
-
 ---
 
 ### Reflection
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
-
+I modified draw_lines(). It consists of 3-steps. First, points are classified by the left lane or right lane according to the slope of (x1, y1) and (x2, y2). Second, By using the np.polyfit, classified points are fitting to the first-order polynomial. Lastly, vertices are connected by coefficients which are generated in second step.
 
 ### 2. Identify potential shortcomings with your current pipeline
 
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+Sometimes, it has poor quality when a specific scene of the video. The performance highly depends on calibration parameters
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+If I generate the lanes based on cubic polynomials, I think it will have more smooth lanes
 
-Another potential improvement could be to ...
